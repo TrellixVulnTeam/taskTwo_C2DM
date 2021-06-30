@@ -1,0 +1,84 @@
+<div class="Container">
+    <div class="LoginCard">
+        <H3 style="font-size: 3em; text-align:center;margin-top:40px ">Register</H3>
+        <div class="Form" style="margin-top:80px;"> 
+           <form [formGroup]="registerForm" (submit)="submit()">
+            <mat-form-field class="example-full-width">
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name" placeholder="example">
+               
+                <mat-error *ngIf="registerForm.controls.name.hasError('required')">
+                  Name is <strong>required</strong>
+                </mat-error> 
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" placeholder="Ex.pat@example.com">
+                 <mat-error *ngIf="registerForm.controls.email.hasError('email') && !registerForm.controls.email.hasError('required')">
+                  Please enter a valid email address
+               </mat-error>
+                <mat-error *ngIf="registerForm.controls.email.hasError('required')">
+                  Email is <strong>required</strong>
+                </mat-error> 
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width">
+                <mat-label>Address</mat-label>
+                <input matInput formControlName="address" placeholder="amman"> 
+                <mat-error *ngIf="registerForm.controls.address.hasError('required')">
+                  address is <strong>required</strong>
+                </mat-error> 
+              </mat-form-field>
+           
+            
+           <mat-form-field class="example-full-width">
+            <mat-label>password</mat-label>
+            <input matInput formControlName="password" type="password">
+             <mat-error *ngIf="registerForm.controls.password.hasError('minlength') && !registerForm.controls.password.hasError('required')">
+              password must be more than 8 charcaters
+           </mat-error>
+            <mat-error *ngIf="registerForm.controls.password.hasError('required')">
+              password is <strong>required</strong>
+            </mat-error> 
+          </mat-form-field>
+          
+          <mat-form-field class="example-full-width">
+            <mat-label>confirm password</mat-label>
+            <input matInput formControlName="passwordConfirm" type="password">
+            <mat-error *ngIf="registerForm.controls.passwordConfirm.value != registerForm.controls.password.value">
+              password does not <strong>mach</strong>
+            </mat-error> 
+          
+          </mat-form-field>
+     
+
+          <mat-form-field class="example-full-width">
+            <mat-label>phone Number</mat-label>
+            <input matInput formControlName="phoneNumber" placeholder="0796390128">
+            <mat-error *ngIf="registerForm.controls.phoneNumber.hasError('required')">
+              phone Number is <strong>required</strong>
+            </mat-error> 
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <mat-label>qualifications</mat-label>
+            <input matInput formControlName="qualifications" placeholder="c++, c#">
+            <mat-error *ngIf="registerForm.controls.qualifications.hasError('required')">
+                qualifications are <strong>required</strong>
+            </mat-error> 
+          </mat-form-field>
+          <button [disabled]="!registerForm.valid"  type="submit" mat-raised-button (click)="submit()"
+          style="flex:1; background-color:#b1a4e9 ;width: 100%;margin-top:50px">
+       Register
+      </button>  <p (click)="goToLoginPage()" style="text-align:center; font-size: 1.7em; margin-top:40px">
+        Already have Account ? Login Page
+    </p>
+</form>
+        </div>
+    
+
+    </div>
+
+</div>
+

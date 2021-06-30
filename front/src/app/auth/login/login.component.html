@@ -1,0 +1,36 @@
+<div class="Container">
+    <div class="LoginCard">
+        <H3 style="font-size: 3em; text-align:center;margin-top:40px ">Login</H3>
+        <div class="Form" style="margin-top:80px;"> 
+            <mat-form-field class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input matInput [formControl]="emailControl" placeholder="Ex. pat@example.com">
+                 <mat-error *ngIf="emailControl.hasError('email') && !emailControl.hasError('required')">
+                  Please enter a valid email address
+               </mat-error>
+                <mat-error *ngIf="emailControl.hasError('required')">
+                  Email is <strong>required</strong>
+                </mat-error> 
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width">
+                <mat-label>Password</mat-label>
+                <input type="password" matInput [formControl]="passwordControl">
+                 <mat-error *ngIf="passwordControl.hasError('minLength') && !passwordControl.hasError('required')">
+                  password must be more than 8 digits
+                </mat-error>
+                <mat-error *ngIf="passwordControl.hasError('required')">
+                  Password is <strong>required</strong>
+                </mat-error> 
+              </mat-form-field>
+         
+              <button [disabled]="!emailControl.valid || !passwordControl.valid" mat-raised-button (click)="submit()"
+                style="flex:1; background-color:#b1a4e9 ;width: 100%;margin-top:50px">
+             Login
+            </button>
+
+        </div>
+      <p (click)="goToRegisterPage()" style="text-align:center; font-size: 1.7em; margin-top:40px">Creat New Account</p>
+    </div>
+
+</div>
